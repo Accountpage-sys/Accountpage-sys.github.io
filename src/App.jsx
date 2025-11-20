@@ -20,9 +20,17 @@ import AdminDashboard from './pages/AdminDashboard'
 function AppContent() {
   const location = useLocation()
   const navigate = useNavigate()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(true)
+  // Initialize auth state synchronously from localStorage to avoid redirect issues
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const auth = localStorage.getItem('isAuthenticated')
+    const userEmail = localStorage.getItem('userEmail')
+    return auth === 'true' && !!userEmail
+  })
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
+    const adminAuth = localStorage.getItem('isAdminAuthenticated')
+    return adminAuth === 'true'
+  })
+  const [loading, setLoading] = useState(false) // Start as false since we initialize synchronously
 
   // Update favicon based on current route - run after render to avoid interfering with routing
   useEffect(() => {
@@ -118,10 +126,7 @@ function AppContent() {
     }
   }, [])
 
-  // Don't show loading screen - let routes render immediately
-  // if (loading) {
-  //   return <div>Loading...</div>
-  // }
+  // Routes render immediately - auth state is initialized synchronously
 
   return (
     <Routes>
