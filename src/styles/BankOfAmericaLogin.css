@@ -1,0 +1,120 @@
+/* Bank of America Login - Red Theme */
+.bank-of-america.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #E31837 0%, #b8142a 100%);
+  padding: 20px;
+}
+
+.bank-of-america .login-card {
+  background: white;
+  border-radius: 24px;
+  padding: 48px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 12px 48px rgba(227, 24, 55, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.bank-of-america .login-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.bank-of-america .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.bank-of-america .logo img {
+  height: 140px;
+  width: auto;
+}
+
+.login-header h1 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 15px;
+}
+
+.bank-of-america .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bank-of-america .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #E31837;
+  box-shadow: 0 0 0 3px rgba(227, 24, 55, 0.1);
+}
+
+.bank-of-america .error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  text-align: center;
+  border: 2px solid #fcc;
+  font-weight: 600;
+}
+
+.bank-of-america .login-button {
+  background: linear-gradient(135deg, #E31837 0%, #b8142a 100%);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 6px 16px rgba(227, 24, 55, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #b8142a 0%, #E31837 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(227, 24, 55, 0.5);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
+

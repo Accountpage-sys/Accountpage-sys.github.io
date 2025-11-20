@@ -1,0 +1,518 @@
+/* Regions Bank - Green Theme */
+.regions-bank.landing-container {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Profile Icon and Menu */
+.regions-bank .profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.regions-bank .profile-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  outline: none;
+}
+
+.regions-bank .profile-icon-btn:hover:not(:active) {
+  background-color: #f0f0f0;
+}
+
+.regions-bank .profile-icon-btn:active {
+  background-color: #e0e0e0;
+}
+
+.regions-bank .profile-icon-btn:focus {
+  outline: 2px solid #28a745;
+  outline-offset: 2px;
+}
+
+.regions-bank .profile-icon-btn svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+/* Profile Menu Backdrop */
+.regions-bank .profile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 999;
+}
+
+.regions-bank .profile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+  max-width: 320px;
+  z-index: 1000;
+  overflow: hidden;
+  animation: profileMenuSlideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e9ecef;
+}
+
+@keyframes profileMenuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.regions-bank .profile-menu-header {
+  padding: 16px;
+  border-bottom: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+}
+
+.regions-bank .profile-email {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.regions-bank .profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.regions-bank .profile-menu-item:hover {
+  background-color: #f8f9fa;
+}
+
+.regions-bank .profile-menu-item:active {
+  background-color: #e9ecef;
+}
+
+.regions-bank .profile-menu-item:last-child {
+  color: #dc3545;
+  border-top: 1px solid #e9ecef;
+  margin-top: 4px;
+  padding-top: 16px;
+}
+
+.regions-bank .profile-menu-item:last-child:hover {
+  background-color: #fff5f5;
+  color: #c82333;
+}
+
+.regions-bank .menu-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* Message Toast */
+.regions-bank .message-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-width: 90%;
+  text-align: center;
+  font-size: 14px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.message-toast.info {
+  background-color: #17a2b8;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Header */
+.regions-bank .header {
+  background-color: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  padding-top: 16px;
+  position: relative;
+}
+
+.regions-bank .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.regions-bank .header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.regions-bank .header-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.regions-bank .greeting {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.regions-bank .greeting h2 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.regions-bank .greeting p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Shortcuts */
+.regions-bank .shortcuts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.regions-bank .shortcut-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.regions-bank .shortcut-btn:hover {
+  background-color: #e9ecef;
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.regions-bank .shortcut-btn:active {
+  transform: scale(0.98);
+}
+
+/* Account Cards */
+.regions-bank .accounts-section {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.regions-bank .account-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.regions-bank .account-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.regions-bank .account-header {
+  margin-bottom: 8px;
+}
+
+.regions-bank .account-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.regions-bank .account-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.regions-bank .account-balance {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+/* Advice Card */
+.regions-bank .advice-card {
+  margin: 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.regions-bank .advice-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.regions-bank .advice-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.regions-bank .advice-text {
+  flex: 1;
+}
+
+.regions-bank .advice-text p {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.regions-bank .learn-more-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.regions-bank .learn-more-btn:hover {
+  background-color: #218838;
+}
+
+.regions-bank .learn-more-btn:active {
+  transform: scale(0.98);
+}
+
+/* Spending Card */
+.regions-bank .spending-card {
+  margin: 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.regions-bank .spending-card h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.regions-bank .spending-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.regions-bank .budget-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.regions-bank .budget-btn:hover {
+  background-color: #e9ecef;
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.regions-bank .budget-btn:active {
+  transform: scale(0.98);
+}
+
+/* Bottom Navigation */
+.regions-bank .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background-color: #fff;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.regions-bank .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.regions-bank .nav-item:hover {
+  opacity: 0.8;
+}
+
+.regions-bank .nav-item .nav-icon {
+  font-size: 20px;
+  color: #999;
+}
+
+.regions-bank .nav-item.active .nav-icon {
+  color: #28a745;
+}
+
+.regions-bank .nav-label {
+  font-size: 11px;
+  color: #999;
+}
+
+.regions-bank .nav-item.active .nav-label {
+  color: #28a745;
+  font-weight: 500;
+}
+
+
+.regions-bank .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .regions-bank .landing-container {
+    max-width: 100%;
+  }
+  
+  .regions-bank .bottom-nav {
+    max-width: 100%;
+  }
+}
+
+/* Desktop View Improvements */
+@media (min-width: 769px) {
+  .regions-bank .landing-container {
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .regions-bank .mobile-only {
+    display: none;
+  }
+
+  .regions-bank .header {
+    padding: 24px;
+  }
+
+  .regions-bank .accounts-section {
+    padding: 24px;
+  }
+
+  .regions-bank .advice-card,
+  .regions-bank .spending-card {
+    margin: 24px;
+  }
+
+  .regions-bank .bottom-nav {
+    max-width: 600px;
+    border-radius: 12px 12px 0 0;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .regions-bank .landing-container {
+    max-width: 700px;
+  }
+
+  .regions-bank .bottom-nav {
+    max-width: 700px;
+  }
+
+  .regions-bank .account-card {
+    padding: 20px;
+  }
+
+  .regions-bank .greeting h2 {
+    font-size: 24px;
+  }
+
+  .regions-bank .account-balance {
+    font-size: 28px;
+  }
+}

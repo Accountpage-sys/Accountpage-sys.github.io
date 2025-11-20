@@ -1,0 +1,124 @@
+/* Regions Bank Login - Green Theme */
+.regions-bank.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e7e34 0%, #28a745 100%);
+  padding: 20px;
+}
+
+.regions-bank .login-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.regions-bank .login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.regions-bank .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.login-header h1 {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.regions-bank .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.regions-bank .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+.regions-bank .error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.regions-bank .login-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 8px;
+}
+
+.login-button:hover {
+  background-color: #218838;
+}
+
+.login-footer {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.login-footer p {
+  color: #666;
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.demo-info {
+  font-family: monospace;
+  color: #28a745;
+  font-weight: 500;
+}
+
+

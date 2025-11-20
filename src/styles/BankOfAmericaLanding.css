@@ -1,0 +1,563 @@
+/* Bank of America - Red Theme */
+.bank-of-america.landing-container {
+  max-width: 480px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #fff5f5 0%, #ffe6e6 100%);
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Profile Icon and Menu */
+.bank-of-america .profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bank-of-america .profile-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  outline: none;
+}
+
+.bank-of-america .profile-icon-btn:hover:not(:active) {
+  background-color: #f0f0f0;
+}
+
+.bank-of-america .profile-icon-btn:active {
+  background-color: #e0e0e0;
+}
+
+.bank-of-america .profile-icon-btn:focus {
+  outline: 2px solid #E31837;
+  outline-offset: 2px;
+}
+
+.bank-of-america .profile-icon-btn svg {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+/* Profile Menu Backdrop */
+.bank-of-america .profile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 999;
+}
+
+.bank-of-america .profile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+  max-width: 320px;
+  z-index: 1000;
+  overflow: hidden;
+  animation: profileMenuSlideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e9ecef;
+}
+
+@keyframes profileMenuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bank-of-america .profile-menu-header {
+  padding: 16px;
+  border-bottom: 1px solid #e9ecef;
+  background-color: #fff5f5;
+}
+
+.bank-of-america .profile-email {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.bank-of-america .profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.bank-of-america .profile-menu-item:hover {
+  background-color: #fff5f5;
+}
+
+.bank-of-america .profile-menu-item:active {
+  background-color: #ffe6e6;
+}
+
+.bank-of-america .profile-menu-item:last-child {
+  color: #dc3545;
+  border-top: 1px solid #e9ecef;
+  margin-top: 4px;
+  padding-top: 16px;
+}
+
+.bank-of-america .profile-menu-item:last-child:hover {
+  background-color: #fff5f5;
+  color: #c82333;
+}
+
+.bank-of-america .menu-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* Message Toast */
+.bank-of-america .message-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #E31837;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-width: 90%;
+  text-align: center;
+  font-size: 14px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.message-toast.info {
+  background-color: #E31837;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Header */
+.bank-of-america .header {
+  background: white;
+  padding: 20px 16px;
+  border-bottom: 1px solid #e9ecef;
+  padding-top: 20px;
+  position: relative;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bank-of-america .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.bank-of-america .header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.bank-of-america .header-logo img {
+  height: 140px;
+  width: auto;
+}
+
+.bank-of-america .greeting {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.bank-of-america .greeting h2 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.bank-of-america .greeting p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Shortcuts */
+.bank-of-america .shortcuts {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bank-of-america .shortcut-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.bank-of-america .shortcut-btn:hover {
+  background-color: #fff5f5;
+  border-color: #E31837;
+  color: #E31837;
+  transform: translateY(-2px);
+}
+
+.bank-of-america .shortcut-btn:active {
+  transform: scale(0.98);
+}
+
+/* Account Cards */
+.bank-of-america .accounts-section {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bank-of-america .account-card {
+  background: linear-gradient(135deg, #fff 0%, #fff8f8 100%);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(227, 24, 55, 0.15);
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 2px solid #ffe6e6;
+  position: relative;
+  overflow: hidden;
+}
+
+.bank-of-america .account-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E31837 0%, #b8142a 100%);
+}
+
+.bank-of-america .account-card:hover {
+  box-shadow: 0 8px 24px rgba(227, 24, 55, 0.25);
+  transform: translateY(-3px);
+  border-color: #ffcccc;
+}
+
+.bank-of-america .account-header {
+  margin-bottom: 10px;
+}
+
+.bank-of-america .account-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.bank-of-america .account-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bank-of-america .account-balance {
+  font-size: 32px;
+  font-weight: 700;
+  color: #E31837;
+  text-shadow: 0 1px 2px rgba(227, 24, 55, 0.1);
+}
+
+/* Advice Card */
+.bank-of-america .advice-card {
+  margin: 20px 16px;
+  background: linear-gradient(135deg, #E31837 0%, #b8142a 100%);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(227, 24, 55, 0.25);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.advice-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.bank-of-america .advice-content {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.bank-of-america .advice-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.bank-of-america .advice-text {
+  flex: 1;
+}
+
+.bank-of-america .advice-text p {
+  color: white;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.bank-of-america .learn-more-btn {
+  background-color: white;
+  color: #E31837;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bank-of-america .learn-more-btn:hover {
+  background-color: #fff5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bank-of-america .learn-more-btn:active {
+  transform: scale(0.98);
+}
+
+/* Spending Card */
+.bank-of-america .spending-card {
+  margin: 20px 16px;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(227, 24, 55, 0.1);
+  border: 2px solid #ffe6e6;
+}
+
+.bank-of-america .spending-card h3 {
+  color: #E31837;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.bank-of-america .spending-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.bank-of-america .budget-btn {
+  background: linear-gradient(135deg, #E31837 0%, #b8142a 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(227, 24, 55, 0.3);
+}
+
+.bank-of-america .budget-btn:hover {
+  background: linear-gradient(135deg, #b8142a 0%, #E31837 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(227, 24, 55, 0.4);
+}
+
+.bank-of-america .budget-btn:active {
+  transform: scale(0.98);
+}
+
+/* Bottom Navigation */
+.bank-of-america .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  border-top: 3px solid #E31837;
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 0;
+  box-shadow: 0 -4px 16px rgba(227, 24, 55, 0.15);
+  z-index: 100;
+}
+
+.bank-of-america .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bank-of-america .nav-item:hover {
+  opacity: 0.8;
+}
+
+.bank-of-america .nav-item .nav-icon {
+  font-size: 22px;
+  color: #999;
+}
+
+.bank-of-america .nav-item.active .nav-icon {
+  color: #E31837;
+}
+
+.bank-of-america .nav-label {
+  font-size: 11px;
+  color: #999;
+  font-weight: 500;
+}
+
+.bank-of-america .nav-item.active .nav-label {
+  color: #E31837;
+  font-weight: 700;
+}
+
+.bank-of-america .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .landing-container {
+    max-width: 100%;
+  }
+  
+  .bottom-nav {
+    max-width: 100%;
+  }
+}
+
+/* Desktop View Improvements */
+@media (min-width: 769px) {
+  .landing-container {
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(227, 24, 55, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 28px 24px;
+  }
+
+  .accounts-section {
+    padding: 28px 24px;
+  }
+
+  .advice-card,
+  .spending-card {
+    margin: 28px 24px;
+  }
+
+  .bottom-nav {
+    max-width: 600px;
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .landing-container {
+    max-width: 700px;
+  }
+
+  .bottom-nav {
+    max-width: 700px;
+  }
+
+  .account-card {
+    padding: 28px;
+  }
+
+  .bank-of-america .greeting h2 {
+    font-size: 26px;
+  }
+
+  .bank-of-america .account-balance {
+    font-size: 36px;
+  }
+}
+
