@@ -100,9 +100,10 @@ function BankOfAmericaLanding() {
     setTimeout(() => setShowMessage(null), 3000)
   }
 
-  if (!userData) {
-    return <div className="loading">Loading...</div>
-  }
+  // Don't show loading - render immediately
+  // if (!userData) {
+  //   return <div className="loading">Loading...</div>
+  // }
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
@@ -166,8 +167,8 @@ function BankOfAmericaLanding() {
           </div>
         </div>
         <div className="greeting">
-          <h2>{userData.greeting}</h2>
-          <p>{userData.customerMessage}</p>
+          <h2>{userData?.greeting || 'Good morning'}</h2>
+          <p>{userData?.customerMessage || 'Welcome back!'}</p>
         </div>
 
         <div className="shortcuts">
@@ -187,7 +188,7 @@ function BankOfAmericaLanding() {
       </div>
 
       <div className="accounts-section">
-        {userData.accounts.map((account, index) => (
+        {userData?.accounts?.map((account, index) => (
           <div key={index} className="account-card">
             <div className="account-header">
               <div className="account-name">{account.name}</div>

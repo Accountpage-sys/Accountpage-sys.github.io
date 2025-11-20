@@ -92,9 +92,14 @@ function AppContent() {
         const pathParts = path.split('&')
         const newPath = pathParts[0].replace(/~and~/g, '&')
         const newSearch = pathParts.slice(1).join('&').replace(/~and~/g, '&')
-        // Use React Router's navigate to properly handle the redirect
+        // Use window.location.replace to force a full navigation that React Router will pick up
         const newUrl = newPath + (newSearch ? '?' + newSearch : '') + window.location.hash
-        navigate(newUrl, { replace: true })
+        // Use replaceState first, then navigate to ensure React Router sees the change
+        window.history.replaceState(null, '', newUrl)
+        // Small delay to ensure history is updated before navigate
+        setTimeout(() => {
+          navigate(newUrl, { replace: true })
+        }, 0)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
