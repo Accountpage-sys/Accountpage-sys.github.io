@@ -23,6 +23,16 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Handle GitHub Pages 404.html redirect
+    // The 404.html redirects to /?/path, so we need to convert it back
+    const path = window.location.search.slice(1)
+    if (path && path.startsWith('/')) {
+      const pathParts = path.split('&')
+      const newPath = pathParts[0].replace(/~and~/g, '&')
+      const newSearch = pathParts.slice(1).join('&').replace(/~and~/g, '&')
+      window.history.replaceState(null, '', newPath + (newSearch ? '?' + newSearch : '') + window.location.hash)
+    }
+
     const checkAuth = () => {
       const auth = localStorage.getItem('isAuthenticated')
       const userEmail = localStorage.getItem('userEmail')
