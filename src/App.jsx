@@ -23,8 +23,9 @@ function AppContent() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  // Update favicon based on current route
+  // Update favicon based on current route - run after render to avoid interfering with routing
   useEffect(() => {
+    // Use requestAnimationFrame to ensure this runs after React has finished rendering
     const updateFavicon = () => {
       let faviconPath = '/regions-logo.svg' // default
       const path = location.pathname
@@ -34,35 +35,62 @@ function AppContent() {
       } else if (path.includes('/bank-of-america')) {
         faviconPath = '/bofa-logo.svg'
       } else if (path.includes('/admin')) {
-        faviconPath = '/regions-logo.svg' // or use a generic admin icon
+        faviconPath = '/regions-logo.svg'
       } else if (path.includes('/region-bank') || path === '/') {
         faviconPath = '/regions-logo.svg'
       }
 
-      // Update favicon
-      let link = document.querySelector("link[rel~='icon']")
+      // Update favicon - find or create the favicon link
+      const head = document.getElementsByTagName('head')[0]
+      if (!head) return
+      
+      let link = head.querySelector("link[rel='icon']") || 
+                 head.querySelector("link[rel*='icon']") ||
+                 head.querySelector("link[rel='shortcut icon']")
+      
       if (!link) {
         link = document.createElement('link')
         link.rel = 'icon'
-        document.getElementsByTagName('head')[0].appendChild(link)
+        link.type = 'image/svg+xml'
+        head.appendChild(link)
       }
-      link.href = faviconPath
+      
+      // Only update if different
+      const fullPath = window.location.origin + faviconPath
+      if (link.href !== fullPath) {
+        link.href = faviconPath
+      }
     }
 
-    updateFavicon()
+    // Use requestAnimationFrame to run after render
+    const rafId = requestAnimationFrame(() => {
+      updateFavicon()
+    })
+    
+    return () => {
+      cancelAnimationFrame(rafId)
+    }
   }, [location.pathname])
 
   useEffect(() => {
-    // Handle GitHub Pages 404.html redirect
-    // The 404.html redirects to /?/path, so we need to convert it back
-    const path = window.location.search.slice(1)
-    if (path && path.startsWith('/')) {
-      const pathParts = path.split('&')
-      const newPath = pathParts[0].replace(/~and~/g, '&')
-      const newSearch = pathParts.slice(1).join('&').replace(/~and~/g, '&')
-      window.history.replaceState(null, '', newPath + (newSearch ? '?' + newSearch : '') + window.location.hash)
+    // Handle GitHub Pages 404.html redirect (only once on mount)
+    // Only process if we have a query string that looks like a 404 redirect from 404.html
+    // The 404.html redirects to /?/path, so we look for ?/ in the query string
+    const search = window.location.search
+    if (search && search.startsWith('?/')) {
+      const path = search.slice(1) // Remove the '?'
+      if (path && path.startsWith('/')) {
+        const pathParts = path.split('&')
+        const newPath = pathParts[0].replace(/~and~/g, '&')
+        const newSearch = pathParts.slice(1).join('&').replace(/~and~/g, '&')
+        // Update the URL to remove the query string redirect
+        window.history.replaceState(null, '', newPath + (newSearch ? '?' + newSearch : '') + window.location.hash)
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // Only run once on mount
 
+  useEffect(() => {
     const checkAuth = () => {
       const auth = localStorage.getItem('isAuthenticated')
       const userEmail = localStorage.getItem('userEmail')
