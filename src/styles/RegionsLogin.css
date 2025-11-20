@@ -29,18 +29,18 @@
   margin-bottom: 24px;
 }
 
-.logo img {
+.regions-bank .logo img {
   height: 40px;
   width: auto;
 }
 
-.login-header h1 {
+.regions-bank .login-header h1 {
   color: #333;
   margin-bottom: 8px;
   font-size: 28px;
 }
 
-.login-header p {
+.regions-bank .login-header p {
   color: #666;
   font-size: 14px;
 }
@@ -57,13 +57,13 @@
   gap: 8px;
 }
 
-.form-group label {
+.regions-bank .form-group label {
   color: #333;
   font-size: 14px;
   font-weight: 500;
 }
 
-.form-group input {
+.regions-bank .form-group input {
   padding: 12px 16px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -71,7 +71,7 @@
   transition: border-color 0.3s;
 }
 
-.form-group input:focus {
+.regions-bank .form-group input:focus {
   outline: none;
   border-color: #28a745;
 }
@@ -98,24 +98,24 @@
   margin-top: 8px;
 }
 
-.login-button:hover {
+.regions-bank .login-button:hover {
   background-color: #218838;
 }
 
-.login-footer {
+.regions-bank .login-footer {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid #eee;
   text-align: center;
 }
 
-.login-footer p {
+.regions-bank .login-footer p {
   color: #666;
   font-size: 12px;
   margin: 4px 0;
 }
 
-.demo-info {
+.regions-bank .demo-info {
   font-family: monospace;
   color: #28a745;
   font-weight: 500;

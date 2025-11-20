@@ -86,6 +86,18 @@ Without JSONBin, admin changes are stored in localStorage (browser-specific).
 
 The project is configured for GitHub Pages deployment via GitHub Actions. The workflow automatically builds and deploys the application when changes are pushed to the `main` branch.
 
+### Important: Private Repository Limitation
+
+**GitHub Pages on Private Repositories:**
+- **Free GitHub accounts**: GitHub Pages only works with **public** repositories
+- **Paid GitHub accounts** (Pro, Team, Enterprise): GitHub Pages works with private repositories
+
+**Recommendation**: Since this is a frontend-only application with no sensitive code (secrets are stored in GitHub Secrets, not in the code), making the repository **public** is safe and allows free GitHub Pages hosting.
+
+**Alternative**: If you need to keep the repository private, consider:
+- Upgrading to GitHub Pro ($4/month)
+- Using alternative hosting: [Netlify](https://netlify.com), [Vercel](https://vercel.com), or [Cloudflare Pages](https://pages.cloudflare.com) (all support private repos on free tier)
+
 ### Setup for GitHub Pages
 
 1. **Enable GitHub Pages**:
