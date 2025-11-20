@@ -92,6 +92,7 @@ The project is configured for GitHub Pages deployment via GitHub Actions. The wo
    - Go to your repository on GitHub
    - Navigate to **Settings** > **Pages**
    - Under "Source", select **"GitHub Actions"** (not "Deploy from a branch")
+   - **Important**: If you see "pages-build-deployment" workflow, it means Pages is set to deploy from a branch. Change it to "GitHub Actions" to use our custom workflow.
    - Save the settings
 
 2. **Add Environment Variables**:
