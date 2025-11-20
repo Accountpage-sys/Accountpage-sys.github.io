@@ -73,7 +73,7 @@ function ChaseLanding() {
     localStorage.removeItem('isAuthenticated')
     localStorage.removeItem('userEmail')
     localStorage.removeItem('userData')
-    navigate('/chase-bank/login', { replace: true })
+    window.location.href = '/chase-bank/login'
   }
 
   const handleShortcutClick = (shortcut) => {

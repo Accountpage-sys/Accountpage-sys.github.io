@@ -35,7 +35,7 @@ function AdminDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem('isAdminAuthenticated')
-    navigate('/admin/login')
+    window.location.href = '/admin/login'
   }
 
   const handleDelete = async (index) => {

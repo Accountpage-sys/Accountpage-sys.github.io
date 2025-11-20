@@ -70,10 +70,12 @@ function Landing() {
 
   const handleLogout = () => {
     setShowProfileMenu(false)
+    // Clear all auth data
     localStorage.removeItem('isAuthenticated')
     localStorage.removeItem('userEmail')
     localStorage.removeItem('userData')
-    navigate('/region-bank/login', { replace: true })
+    // Use window.location to prevent navigation throttling
+    window.location.href = '/region-bank/login'
   }
 
 

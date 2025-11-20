@@ -7,6 +7,17 @@
 const JSONBIN_BIN_ID = (import.meta.env.VITE_JSONBIN_BIN_ID || '').trim().replace(/^["']|["']$/g, '')
 const JSONBIN_API_KEY = (import.meta.env.VITE_JSONBIN_API_KEY || '').trim().replace(/^["']|["']$/g, '') // Required for private bins
 
+// Debug: Check if env vars are loaded (only in development)
+if (import.meta.env.DEV) {
+  if (JSONBIN_BIN_ID && !JSONBIN_API_KEY) {
+    console.warn('JSONBin: Bin ID is set but API Key is missing. JSONBin features will not work.')
+  } else if (!JSONBIN_BIN_ID && JSONBIN_API_KEY) {
+    console.warn('JSONBin: API Key is set but Bin ID is missing. JSONBin features will not work.')
+  } else if (!JSONBIN_BIN_ID && !JSONBIN_API_KEY) {
+    console.info('JSONBin: Not configured. Using localStorage fallback.')
+  }
+}
+
 export const getUsers = async () => {
   // If JSONBin is configured, use it as the primary source
   if (JSONBIN_BIN_ID && JSONBIN_API_KEY) {
@@ -27,6 +38,9 @@ export const getUsers = async () => {
         // Also update localStorage as cache
         localStorage.setItem('usersData', JSON.stringify(users))
         return users
+      } else if (response.status === 401) {
+        // 401 Unauthorized - API key is invalid or missing
+        throw new Error('JSONBin authentication failed. Please check your API key in GitHub Secrets.')
       } else {
         const errorData = await response.json().catch(() => ({}))
         throw new Error(errorData.message || `HTTP ${response.status}`)
@@ -85,6 +99,9 @@ export const saveUsers = async (users) => {
       // Clear localStorage cache to force fresh fetch on next load
       localStorage.removeItem('usersData')
       return { success: true, message: 'Users updated successfully! Changes are now available to all users.' }
+    } else if (response.status === 401) {
+      // 401 Unauthorized - API key is invalid or missing
+      throw new Error('JSONBin authentication failed. Please check your API key in GitHub Secrets.')
     } else {
       const errorData = await response.json().catch(() => ({}))
       throw new Error(errorData.message || `Failed to update: HTTP ${response.status}`)

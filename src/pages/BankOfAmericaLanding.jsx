@@ -73,7 +73,7 @@ function BankOfAmericaLanding() {
     localStorage.removeItem('isAuthenticated')
     localStorage.removeItem('userEmail')
     localStorage.removeItem('userData')
-    navigate('/bank-of-america/login', { replace: true })
+    window.location.href = '/bank-of-america/login'
   }
 
   const handleShortcutClick = (shortcut) => {
