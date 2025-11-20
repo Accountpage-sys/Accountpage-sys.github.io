@@ -118,9 +118,10 @@ function AppContent() {
     }
   }, [])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  // Don't show loading screen - let routes render immediately
+  // if (loading) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <Routes>

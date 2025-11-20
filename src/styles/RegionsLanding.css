@@ -160,10 +160,13 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  max-width: 90%;
+  max-width: calc(100% - 32px);
+  width: auto;
+  min-width: 200px;
   text-align: center;
   font-size: 14px;
   animation: slideDown 0.3s ease-out;
+  word-wrap: break-word;
 }
 
 .message-toast.info {
@@ -457,6 +460,32 @@
   
   .regions-bank .bottom-nav {
     max-width: 100%;
+    padding: 12px 8px;
+    justify-content: space-evenly;
+  }
+  
+  .regions-bank .nav-item {
+    flex: 1;
+    min-width: 0;
+    padding: 0 4px;
+  }
+  
+  .regions-bank .nav-label {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .regions-bank .message-toast {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    max-width: calc(100% - 32px);
+    padding: 12px 16px;
+    font-size: 13px;
   }
 }
 
