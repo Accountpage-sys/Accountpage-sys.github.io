@@ -32,6 +32,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify secrets (without exposing values)
+        run: |
+          if [ -z "${{ secrets.VITE_ADMIN_PASSWORD }}" ]; then
+            echo "⚠️  WARNING: VITE_ADMIN_PASSWORD is not set"
+          else
+            echo "✅ VITE_ADMIN_PASSWORD is set"
+          fi
+          if [ -z "${{ secrets.VITE_JSONBIN_BIN_ID }}" ]; then
+            echo "⚠️  WARNING: VITE_JSONBIN_BIN_ID is not set (JSONBin features will not work)"
+          else
+            echo "✅ VITE_JSONBIN_BIN_ID is set"
+          fi
+          if [ -z "${{ secrets.VITE_JSONBIN_API_KEY }}" ]; then
+            echo "⚠️  WARNING: VITE_JSONBIN_API_KEY is not set (JSONBin features will not work)"
+          else
+            echo "✅ VITE_JSONBIN_API_KEY is set"
+          fi
+
       - name: Build
         run: npm run build
         env:
